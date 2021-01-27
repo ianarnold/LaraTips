@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AlbumController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AlbumController::class, 'viewWelcome']);
+Route::get('/list', [AlbumController::class, 'viewListAlbum']);
+Route::get('/new', [AlbumController::class, 'viewNewAlbum']);
+
