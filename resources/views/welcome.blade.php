@@ -59,12 +59,12 @@
             <div class="album py-5 bg-light">
                 <div class="container">
                     <div class="row">
-                        @for($i=0; $i<10; $i++)
+                        @foreach(\App\Models\Album::orderByDesc('id')->get() as $album)
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="https://placehold.it/255x255"/>
+                                <img class="bd-placeholder-img card-img-top" src="{{ $album->image_url }}"/>
                                 <div class="card-body">
-                                    <p class="card-text">DESCRICAO DA IMG</p>
+                                    <p class="card-text">{{ $album->description }}</p>
                                     <div class="d-flex justify-content-between align-items-center text-muted">
 
                                         <small class=" text-right">{{ date('d/m/Y - H:i:s') }}</small>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endfor
+                        @endforeach
                     </div>
                 </div>
             </div>

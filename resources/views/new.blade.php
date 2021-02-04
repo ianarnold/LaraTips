@@ -43,9 +43,11 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <form>
+                            <form action="{{ route('new-album') }}" method="post" enctype="multipart/form-data">
                                 <fieldset>
                                     <legend>Criar novo post</legend>
+
+                                    @csrf
                                     
                                     <div class="form-group">
                                         <label for="descID">Descrição da imagem</label>
@@ -62,11 +64,8 @@
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                           <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                            <label class="custom-file-label" for="inputGroupFile02">Escolha um arquivo</label>
-                                          </div>
-                                          <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
+                                            <input type="file" class="custom-file-input" id="imageID" name="image">
+                                            <label class="custom-file-label" for="imageID">Escolha um arquivo</label>
                                           </div>
                                         </div>
                                     </div>

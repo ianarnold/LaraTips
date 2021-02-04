@@ -3,19 +3,28 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AlbumController;
+use App\Models\Album;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+//CRUD DE IMAGENS SIMPLES
+
+
+
+
+//ROTAS QUE RETORNAM VIEWS 
 
 Route::get('/', [AlbumController::class, 'viewWelcome']);
+Route::get('/welcome', [AlbumController::class, 'viewWelcome']);
 Route::get('/list', [AlbumController::class, 'viewListAlbum']);
 Route::get('/new', [AlbumController::class, 'viewNewAlbum']);
 
+
+//ROTAS QUE RETORNAM OPERAÇÕES DO CRUD
+
+Route::post('/new', [AlbumController::class, 'postAlbum'])->name('new-album');
+
+
+//ROTAS TESTE
+
+Route::get('/test', function() {
+    dd(Album::find(1)->toArray());
+});
