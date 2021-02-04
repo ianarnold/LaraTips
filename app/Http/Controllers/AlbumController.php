@@ -11,7 +11,8 @@ class AlbumController extends Controller
     
     public function viewWelcome() 
     {
-        return view('welcome');
+        $albums = \App\Models\Album::orderByDesc('id')->get();
+        return view('welcome', compact('albums'));
     }
 
     public function viewListAlbum() 
@@ -24,7 +25,6 @@ class AlbumController extends Controller
         return view('new');
     }
     
-
     public function postAlbum(Request $request) 
     {
 
@@ -40,4 +40,5 @@ class AlbumController extends Controller
 
         return redirect('/welcome');
     }
+
 }

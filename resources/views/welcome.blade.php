@@ -59,7 +59,8 @@
             <div class="album py-5 bg-light">
                 <div class="container">
                     <div class="row">
-                        @foreach(\App\Models\Album::orderByDesc('id')->get() as $album)
+
+                        @foreach($albums as $album)
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
                                 <img class="bd-placeholder-img card-img-top" src="{{ $album->image_url }}"/>
@@ -72,6 +73,7 @@
                                 </div>
                             </div>
                         </div>
+
                         @endforeach
                     </div>
                 </div>
