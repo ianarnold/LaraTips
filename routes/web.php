@@ -14,7 +14,6 @@ use App\Models\Album;
 
 Route::get('/', [AlbumController::class, 'viewWelcome']);
 Route::get('/welcome', [AlbumController::class, 'viewWelcome']);
-Route::get('/list', [AlbumController::class, 'viewListAlbum']);
 Route::get('/new', [AlbumController::class, 'viewNewAlbum']);
 
 

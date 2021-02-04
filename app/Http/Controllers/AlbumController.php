@@ -15,11 +15,6 @@ class AlbumController extends Controller
         return view('welcome', compact('albums'));
     }
 
-    public function viewListAlbum() 
-    {
-        return view('list');
-    }
-
     public function viewNewAlbum() 
     {
         return view('new');
