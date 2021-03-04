@@ -19,10 +19,18 @@ class AlbumController extends Controller
     {
         return view('new');
     }
+
+    
+    public function viewEditAlbum($id)
+    {
+        $album = Album::findOrFail($id);
+        return view('edit_album', ['album' => $album]);
+    }
+    
+
     
     public function postAlbum(Request $request) 
     {
-
         $extension = $request->file('image')->getClientOriginalExtension();
         $fileName = Str::random(10) . "." . $extension;
 
@@ -33,6 +41,29 @@ class AlbumController extends Controller
             'image_path' => "images/" . $fileName
         ]);
 
+        return redirect('/welcome');
+    }
+
+    public function showAlbum($id)
+    {
+        $album = Album::findOrFail($id);
+        return view('foto', ['album' => $album]);
+    }
+
+    public function deleteAlbum($id)
+    {
+        $album = Album::findOrFail($id);
+        $album->delete();
+
+        return redirect('/welcome');
+    }
+
+    public function editAlbum(Request $request, $id)
+    {
+        $album = Album::findOrFail($id);
+        $album->update([
+            'description' => $request->input('description')
+        ]);
         return redirect('/welcome');
     }
 
