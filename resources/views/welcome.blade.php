@@ -49,8 +49,8 @@
                     <h1 class="jumbotron-heading">Album do LaraTIPS</h1>
                     <p class="lead text-muted">Site desenvolvido pra estudos</p>
                     <p>
-                        <a href="#" class="btn btn-primary my-2">Album</a>
-                        <a href="#" class="btn btn-primary my-2">Postar imagem</a>
+                        <a href="{{url('/welcome')}}" class="btn btn-primary my-2">Album</a>
+                        <a href="{{url('/new')}}" class="btn btn-primary my-2">Postar imagem</a>
                     </p>
                 </div>
             </section>

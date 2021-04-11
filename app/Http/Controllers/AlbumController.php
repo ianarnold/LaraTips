@@ -20,14 +20,11 @@ class AlbumController extends Controller
         return view('new');
     }
 
-    
     public function viewEditAlbum($id)
     {
         $album = Album::findOrFail($id);
         return view('edit_album', ['album' => $album]);
     }
-    
-
     
     public function postAlbum(Request $request) 
     {
@@ -53,7 +50,14 @@ class AlbumController extends Controller
     public function deleteAlbum($id)
     {
         $album = Album::findOrFail($id);
-        $album->delete();
+        if (!empty($album))
+        {
+            $album->delete();
+        }
+        else{
+            return 'erro';
+        }
+    
 
         return redirect('/welcome');
     }
