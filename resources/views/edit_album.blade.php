@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,14 +8,11 @@
             rel="stylesheet"
             href="https://bootswatch.com/4/pulse/bootstrap.min.css"
             class="stylesheet">
-
         <title>LaraTIPS</title>
-
     </head>
 
     <body>
         <header>
-
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
                     <a href="#" class="navbar-brand d-flex align-items-center">
@@ -37,52 +35,37 @@
                         </svg>
                         <strong>LaraTIPS Album</strong>
                     </a>
-
                 </div>
             </div>
         </header>
-
-        <main role="main">
-
-            <section class="jumbotron text-center">
-                <div class="container">
-                    <h1 class="jumbotron-heading">Album do LaraTIPS</h1>
-                    <p class="lead text-muted">Site desenvolvido pra estudos</p>
-                    <p>
-                        <a href="{{url('/welcome')}}" class="btn btn-primary my-2">Album</a>
-                        <a href="{{url('/new')}}" class="btn btn-primary my-2">Postar imagem</a>
-                    </p>
-                </div>
-            </section>
-            <hr>
-
+        <main role="main" class="container">
             <div class="album py-5 bg-light">
                 <div class="container">
-                    <div class="row">
-
-                        @foreach($albums as $album)
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="{{ $album->image_url }}"/>
-                                <div class="card-body">
-                                    <p class="card-text">{{ $album->description }}</p>
-                                    <div class="d-flex justify-content-between align-items-center text-muted">
-                                        <small class=" text-right">{{ date('d/m/Y - H:i:s') }}</small>
-                                        <a href="{{ route('show-album', ['id' => $album->id]) }}">Ver mais</a>
-                                        <a href="{{ route('delete-album', ['id' => $album->id]) }}">Deletar imagem</a>
-                                        <a href="{{ route('view-edit-album', ['id' => $album->id]) }}">Editar imagem</a>
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <form action="{{ route('edit-album',  ['id' => $album->id]) }}" method="post" enctype="multipart/form-data">
+                                <fieldset>
+                                    <legend>Editar post</legend>
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="descID">Descrição da imagem</label>
+                                        <textarea
+                                            type="text"
+                                            class="form-control"
+                                            id="descID"
+                                            name="description"
+                                            placeholder="Descrição:"></textarea>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
 
-                        @endforeach
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </main>
-        <hr>
+
 
     </body>
 

@@ -48,10 +48,6 @@
                 <div class="container">
                     <h1 class="jumbotron-heading">Album do LaraTIPS</h1>
                     <p class="lead text-muted">Site desenvolvido pra estudos</p>
-                    <p>
-                        <a href="{{url('/welcome')}}" class="btn btn-primary my-2">Album</a>
-                        <a href="{{url('/new')}}" class="btn btn-primary my-2">Postar imagem</a>
-                    </p>
                 </div>
             </section>
             <hr>
@@ -59,30 +55,15 @@
             <div class="album py-5 bg-light">
                 <div class="container">
                     <div class="row">
-
-                        @foreach($albums as $album)
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="{{ $album->image_url }}"/>
-                                <div class="card-body">
-                                    <p class="card-text">{{ $album->description }}</p>
-                                    <div class="d-flex justify-content-between align-items-center text-muted">
-                                        <small class=" text-right">{{ date('d/m/Y - H:i:s') }}</small>
-                                        <a href="{{ route('show-album', ['id' => $album->id]) }}">Ver mais</a>
-                                        <a href="{{ route('delete-album', ['id' => $album->id]) }}">Deletar imagem</a>
-                                        <a href="{{ route('view-edit-album', ['id' => $album->id]) }}">Editar imagem</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        @endforeach
+                        <p>{{ $album->description }}</p>
+                        <img class="bd-placeholder-img card-img-top" src="{{ $album->image_url }}"/>
                     </div>
                 </div>
             </div>
 
         </main>
         <hr>
+
 
     </body>
 
